@@ -1,0 +1,3 @@
+[submodule "libft-wip-version"]
+	path = libft-wip-version
+	url = https://github.com/ellldar/libft-wip-version
