@@ -1,5 +1,5 @@
 NAME = fractol
-SRC = fractol.c
+SRCS = fractol.c src/init_ops.c src/draw_ops.c src/helpers.c
 HDR = -I/includes
 FLGS = -Wall -Werror -Wextra
 SANIT = -fsanitize=address
@@ -15,7 +15,8 @@ MLX = -framework OpenGL -framework AppKit
 all: $(NAME)
 
 $(NAME): $(SRCS) $(LIBFT) $(LIBX) $(INPUT)
-	gcc -o $(NAME) $(SRC) $(HDR) $(LIBS) $(MLX)
+	gcc -o $(NAME) $(SRCS) $(HDR) $(LIBS) $(MLX)
+	./$(NAME)
 
 $(LIBFT):
 	git submodule update --init
@@ -26,7 +27,7 @@ $(LIBX):
 
 debug:
 	gcc -o $(NAME) $(SRCS) $(HDR) $(LIBS) $(MLX) -g
-	lldb $(NAME) -- $(INPUT)
+	lldb $(NAME)
 
 sanit:
 	gcc -o $(NAME) $(SRCS) $(HDR) $(LIBS) $(MLX) $(SANIT) -g
