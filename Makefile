@@ -1,5 +1,5 @@
 NAME = fractol
-SRCS = fractol.c src/init_ops.c src/draw_ops.c src/helpers.c
+SRCS = fractol.c src/init_ops.c src/draw_ops.c src/helpers.c src/mouse_ops.c src/fractals.c
 HDR = -I/includes
 FLGS = -Wall -Werror -Wextra
 SANIT = -fsanitize=address
@@ -14,7 +14,7 @@ MLX = -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-$(NAME): $(SRCS) $(LIBFT) $(LIBX) $(INPUT)
+$(NAME): $(SRCS) $(LIBFT) $(LIBX)
 	gcc -o $(NAME) $(SRCS) $(HDR) $(LIBS) $(MLX)
 	./$(NAME)
 

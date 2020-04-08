@@ -20,6 +20,7 @@ t_scope	*init_scope(void *mlx_ptr, int width, int height, char *title)
 	scope->image = init_image(scope, width, height);
 	scope->width = width;
 	scope->height = height;
+	scope->scale = 4;
 	scope->mouse = (t_mouse*)malloc(sizeof(t_mouse));
 	ft_bzero(scope->mouse, sizeof(t_mouse));
 	scope->key = (t_key*)malloc(sizeof(t_key));

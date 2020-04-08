@@ -10,8 +10,14 @@
 # include <stdio.h>
 # include <time.h>
 
-# define WIDTH	1200
-# define HEIGHT	800
+# define WIDTH	1024
+# define HEIGHT	720
+
+typedef struct	s_complex
+{
+	double	re;
+	double	im;
+}				t_complex;
 
 typedef struct	s_mouse
 {
@@ -45,6 +51,7 @@ typedef struct	s_scope
 	t_key	*key;
 	int		width;
 	int		height;
+	int		scale;
 }				t_scope;
 
 t_image			*init_image(t_scope *scope, int width, int height);
@@ -52,7 +59,15 @@ t_scope			*init_scope(void *mlx_ptr, int width, int height, char *title);
 void			put_pixel(t_scope *scope, int x, int y, int color);
 void			render_image(t_scope *scope);
 void			clear_image(t_scope *scope);
+void			set_background(t_scope *scope, int color);
+
+int				mouse_press(int button, int x, int y, t_scope *scope);
+int				mouse_release(int button, int x, int y, t_scope *scope);
+int				mouse_move(int x, int y, t_scope *scope);
+
+void			draw_mandelbrot(t_scope *scope);
 
 int				is_confined(int x, int y);
+double			to_complex(int n, int plane, int scale);
 
 #endif

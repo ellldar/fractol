@@ -1,16 +1,22 @@
 #include "includes/fractol.h"
 
+static void	init_hooks(t_scope *scope)
+{
+	mlx_hook(scope->win_ptr, 4, 0, mouse_press, scope);
+	mlx_hook(scope->win_ptr, 5, 0, mouse_release, scope);
+	mlx_hook(scope->win_ptr, 6, 0, mouse_move, scope);
+}
+
 int	main(void)
 {
-	t_scope	*scope;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_scope	*scope;
 
 	mlx_ptr = mlx_init();
 	scope = init_scope(mlx_ptr, WIDTH, HEIGHT, "FRACTOL");
-	printf("TEST!\n");
-	put_pixel(scope, WIDTH / 2, HEIGHT / 2, 0xFFFFFF);
-	render_image(scope);
+	init_hooks(scope);
+	draw_mandelbrot(scope);
 	mlx_loop(mlx_ptr);
 	return (0);
 }
